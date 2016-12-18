@@ -13,23 +13,23 @@ int threshold = 15;
 
 void driveControl() {
 
-  //Create "deadzone" for Y1/Ch3
-	if(abs(vexRT[Ch3]) > threshold) {
-		Y1 = vexRT[Ch3];
+  //Create "deadzone" for Y1/Ch4
+	if(abs(vexRT[Ch4]) > threshold) {
+		Y1 = vexRT[Ch4];
 	}	else {
 		Y1 = 0;
 	}
 
-	//Create "deadzone" for X1/Ch4
-	if(abs(vexRT[Ch4]) > threshold) {
-		X1 = vexRT[Ch4];
+	//Create "deadzone" for X1/Ch3
+	if(abs(vexRT[Ch3]) > threshold) {
+		X1 = vexRT[Ch3];
 	}	else {
 		X1 = 0;
 	}
 
-	//Create "deadzone" for X2/Ch1
-	if(abs(vexRT[Ch1]) > threshold) {
-		X2 = vexRT[Ch1];
+	//Create "deadzone" for X2/Ch2
+	if(abs(vexRT[Ch2]) > threshold) {
+		X2 = vexRT[Ch2];
 	}	else {
 		X2 = 0;
 	}
