@@ -19,7 +19,7 @@ void driveControl() {
 
   //Create "deadzone" for Y1/Ch4
 	if(abs(vexRT[Ch4]) > threshold) {
-		Y1 = -1 * vexRT[Ch4];
+		Y1 = 1 * vexRT[Ch4];
 	}	else {
 		Y1 = 0;
 	}
@@ -31,18 +31,18 @@ void driveControl() {
 		X1 = 0;
 	}
 
-	//Create "deadzone" for X2/Ch2
-	if(abs(vexRT[Ch2]) > threshold) {
-		X2 = vexRT[Ch2];
+	//Create "deadzone" for X2/Ch1
+	if(abs(vexRT[Ch1]) > threshold) {
+		X2 = 1 * vexRT[Ch1];
 	}	else {
 		X2 = 0;
 	}
 
 	//Remote Control Commands
-	motor[driveFrontRight] = Y1 - X1 - X2;
+	motor[driveFrontRight] = Y1 - X1 + X2;
 	motor[driveFrontLeft]  = Y1 + X1 + X2;
 	motor[driveBackRight]  = Y1 + X1 - X2;
-	motor[driveBackLeft]   = Y1 - X1 + X2;
+	motor[driveBackLeft]   = Y1 - X1 - X2;
 
 }
 
