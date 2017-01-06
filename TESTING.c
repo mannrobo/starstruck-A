@@ -10,35 +10,75 @@
 
 #include "JoystickDriver.c"
 
-int X1, X2, Y1 = 0;
+
+
+
+//*** BEGIN ROBOT SETTINGS ***
+
+// Non-programmers can edit this section to
+//   change robot behaviour without any
+//   major programming required.
+
+/* These boolean values will flip axes.
+   If the robot moves the wrong way when using the
+     analog stick, you will need to invert that axis.
+   Just change the values from true/false to fix it.
+*/
+bool invertAxis1 = false; // Strafe left/right
+bool invertAxis3 = true; // Clockwise/Counterclockwise rotation
+bool invertAxis4 = false; // Move forwards/backwards
+
+// Amount analog stick must be moved
+//   before motion will begin.
 int threshold = 15;
+
+
+//*** END ROBOT SETTINGS ***
+
+
+
+
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// IF YOU ARE NOT A TEAM PROGRAMMER:
+// DO NOT MODIFY CODE BELOW THIS LINE!
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+int X1, X2, Y1 = 0;
+
+int analogShift(int inputValue) {
+	int result = (53/2) * pow(inputValue, (1/3));
+	return (0 <= result < 127) ? (result) : (127);
+}
 
 void driveControl() {
 
 	getJoystickSettings(joystick);
 
-  //Create "deadzone" for Y1/Ch4
+  // Y1 & Ch4
 	if(abs(vexRT[Ch4]) > threshold) {
-		Y1 = 1 * vexRT[Ch4];
+		Y1 = (!invertAxis4) ? (vexRT[Ch4]) : (-1 * vexRT[Ch4]);
+		Y1 = analogShift(Y1);
 	}	else {
 		Y1 = 0;
 	}
 
-	//Create "deadzone" for X1/Ch3
+	// X1 & Ch3
 	if(abs(vexRT[Ch3]) > threshold) {
-		X1 = -1 * vexRT[Ch3];
+		X1 = (!invertAxis3) ? (vexRT[Ch3]) : (-1 * vexRT[Ch3]);
+		X1 = analogShift(X1);
 	}	else {
 		X1 = 0;
 	}
 
-	//Create "deadzone" for X2/Ch1
+	// X2 & Ch1
 	if(abs(vexRT[Ch1]) > threshold) {
-		X2 = 1 * vexRT[Ch1];
+		X2 = (!invertAxis1) ? (vexRT[Ch1]) : (-1 * vexRT[Ch1]);
+		X2 = analogShift(X2);
 	}	else {
 		X2 = 0;
 	}
 
-	//Remote Control Commands
+	// Compute values and send to motors
 	motor[driveFrontRight] = Y1 - X1 + X2;
 	motor[driveFrontLeft]  = Y1 + X1 + X2;
 	motor[driveBackRight]  = Y1 + X1 - X2;
