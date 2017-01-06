@@ -1,4 +1,13 @@
 
+
+
+/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*
+ *!! IF YOU ARE NOT A TEAM PROGRAMMER: !!*
+ *!!     DO NOT MODIFY CODE BELOW!     !!*
+ *!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+
+
+
 int negate(int value) {
 	return (-1 * value);
 }
@@ -21,12 +30,12 @@ int analogShift(int inputValue) {
 		return MOTOR_OFF;
 	}
 
-	int result = CTRL_SENSETIVITY * (pow(inputValue, 3));
+	int result = (1/(15500 - SENSE_MOD)) * (pow(inputValue, 3));
 
 	if (result < negate(MOTOR_MAX)) {
-		return -127;
+		return negate(MOTOR_MAX);
 	}	else if (result > MOTOR_MAX) {
-		return 127;
+		return MOTOR_MAX;
 	}	else {
 		return result;
 	}

@@ -1,43 +1,52 @@
 #ifndef ROBOT_SETTINGS
 #define ROBOT_SETTINGS
 
-    //*** BEGIN ROBOT SETTINGS ***
+    /*** BEGIN ROBOT SETTINGS ***/
 
-		/* Non-programmers can edit this section to *
+		/* Non-programmers CAN EDIT this section to *
 		 *   change robot behaviour without any     *
 		 *   major programming required.            */
+
+	  /* PROBLEMS? Try setting values back to defaults. *
+	   *   They are listed to the right of every value  *
+	   *     in the green comment.                      *
+	   *   Also, make sure there is a semicolon after   *
+	   *     each value is declared/set.                */
 
 		/* These boolean values will flip axes.                 *
 		 *   If the robot moves the wrong way when using the    *
 		 *     analog stick, you will need to invert that axis. *
 		 *   Just change the values from true/false to fix it.  */
-		const bool INVERT_AXIS_1 = false; // Strafe left/right
-		const bool INVERT_AXIS_3 = true; // Clockwise/Counterclockwise rotation
-		const bool INVERT_AXIS_4 = false; // Move forwards/backwards
-
-		// Enable or disables sensetivity.
-		const bool ENABLE_SENSETIVITY = true;
+		const bool INVERT_AXIS_1 = false; // default: false; srafe left/right
+		const bool INVERT_AXIS_3 = true; // default: true; rotation CW/CCW
+		const bool INVERT_AXIS_4 = false; // default: false; move forwards/backwards
 
 		/* Amount analog stick must be moved
 		 *   before motion will begin. */
-		const int THRESHOLD = 15;
+		const int THRESHOLD = 15; // default: 15
+
+		/* Turns sensetivity control on or off.       *
+		 *   When enabled, a cubic function is used   *
+		 *     to determine values, giving (ideally)  *
+		 *     smoother drive acceleration & control. *
+		 *   When disabled, a linear function is used *
+		 *     to determine values instead.           */
+		const bool ENABLE_SENSETIVITY = true; // default: true
 
 		/* Changes the sensetivity factor for analog sticks. *
-		 *   Should be an integer greater than zero, but     *
-		 *     less than one.                                */
-		const int CTRL_SENSETIVITY = (1/15500); // default value: (1/15500)
+		 *   Possible values range from -13000 to 13000.     */
+		const int SENSE_MOD = -500; // default: -500
 
 
-		//*** END ROBOT SETTINGS ***
+		/*** END ROBOT SETTINGS ***/
 
 		/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*
 		 *!! IF YOU ARE NOT A TEAM PROGRAMMER: !!*
 		 *!!     DO NOT MODIFY CODE BELOW!     !!*
 		 *!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
 
-		const char MOTOR_MAX = 127;
-    //const char MOTOR_HALF = MOTOR_MAX/2;
-    const char MOTOR_OFF_COAST = 1;
-    const char MOTOR_OFF = 0;
+		const char MOTOR_MAX = 127; // default: 127
+    const char MOTOR_OFF_COAST = 1; // default: 1
+    const char MOTOR_OFF = 0; // default: 0
 
 #endif
