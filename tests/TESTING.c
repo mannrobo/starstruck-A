@@ -20,17 +20,25 @@
 //   major programming required.
 
 /* These boolean values will flip axes.
-   If the robot moves the wrong way when using the
-     analog stick, you will need to invert that axis.
-   Just change the values from true/false to fix it.
-*/
+ *   If the robot moves the wrong way when using the
+ *     analog stick, you will need to invert that axis.
+ *   Just change the values from true/false to fix it. */
 bool invertAxis1 = false; // Strafe left/right
 bool invertAxis3 = true; // Clockwise/Counterclockwise rotation
 bool invertAxis4 = false; // Move forwards/backwards
 
-// Amount analog stick must be moved
-//   before motion will begin.
-int threshold = 15;
+// Enable or disables sensetivity.
+bool ENABLE_SENSETIVITY = false;
+
+/* Amount analog stick must be moved
+ *   before motion will begin. */
+const int THRESHOLD = 15;
+
+/* Changes the sensetivity factor for analog sticks.
+ *   Should be an integer less than (55/2), but
+ *     greater than zero.
+ *   Lower values may cap your speed! */
+const int CTRL_SENSETIVITY = (55/2);
 
 
 //*** END ROBOT SETTINGS ***
@@ -38,16 +46,29 @@ int threshold = 15;
 
 
 
-// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-// IF YOU ARE NOT A TEAM PROGRAMMER:
-// DO NOT MODIFY CODE BELOW THIS LINE!
-// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+ * IF YOU ARE NOT A TEAM PROGRAMMER:
+ * DO NOT MODIFY CODE BELOW THIS LINE!
+ * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
 
 int X1, X2, Y1 = 0;
 
 int analogShift(int inputValue) {
-	int result = (53/2) * pow(inputValue, (1/3));
-	return (0 <= result < 127) ? (result) : (127);
+
+	if (!ENABLE_SENSETIVITY) {
+		return inputValue;
+	}
+
+	int result = CTRL_SENSETIVITY * (pow(inputValue, (1/3)));
+
+	if (result < -127) {
+		return -127;
+	}	else if (result > 127) {
+		return 127;
+	}	else {
+		return result;
+	}
+
 }
 
 void driveControl() {
@@ -55,7 +76,7 @@ void driveControl() {
 	getJoystickSettings(joystick);
 
   // Y1 & Ch4
-	if(abs(vexRT[Ch4]) > threshold) {
+	if(abs(vexRT[Ch4]) > THRESHOLD) {
 		Y1 = (!invertAxis4) ? (vexRT[Ch4]) : (-1 * vexRT[Ch4]);
 		Y1 = analogShift(Y1);
 	}	else {
@@ -63,7 +84,7 @@ void driveControl() {
 	}
 
 	// X1 & Ch3
-	if(abs(vexRT[Ch3]) > threshold) {
+	if(abs(vexRT[Ch3]) > THRESHOLD) {
 		X1 = (!invertAxis3) ? (vexRT[Ch3]) : (-1 * vexRT[Ch3]);
 		X1 = analogShift(X1);
 	}	else {
@@ -71,7 +92,7 @@ void driveControl() {
 	}
 
 	// X2 & Ch1
-	if(abs(vexRT[Ch1]) > threshold) {
+	if(abs(vexRT[Ch1]) > THRESHOLD) {
 		X2 = (!invertAxis1) ? (vexRT[Ch1]) : (-1 * vexRT[Ch1]);
 		X2 = analogShift(X2);
 	}	else {
