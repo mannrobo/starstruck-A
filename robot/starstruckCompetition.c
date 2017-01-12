@@ -28,10 +28,10 @@
 // Main competition background code
 #include "Vex_Competition_Includes.c"
 
-// Constants
+// Import constants and user settings
 #include "settings.h"
 
-// Functions for robot control
+// Import robot control library
 #include "robotControl.c"
 
 // DISABLED #include "JoystickDriver.c"
@@ -39,10 +39,10 @@
 void pre_auton()
 {
 
-  bStopTasksBetweenModes = true;
+	bStopTasksBetweenModes = true;
 	bDisplayCompetitionStatusOnLcd = true;
 
-  halt();
+	halt();
 
 }
 
@@ -64,10 +64,10 @@ task autonomous()
 
 task usercontrol()
 {
-  while (true)
-  {
-  	wristControl();
-  	driveControl();
-    armControl();
-  }
+	while (true)
+	{
+		wristControl();
+		driveControl();
+		armControl();
+	}
 }

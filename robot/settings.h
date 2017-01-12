@@ -13,6 +13,12 @@
 	   *   Also, make sure there is a semicolon after   *
 	   *     each value is declared/set.                */
 
+	  /* CODE MUST BE RE-SENT TO THE ROBOT AFTER A CHANGE! *
+	   *   To do so, open "starstruckCompetition.c" and    *
+	   *     press the "Download to Robot" button.         *
+	   *   Make sure the cortex is ON and connected to the *
+	   *     computer via a USB cable.                     */
+
 		/* These boolean values will flip axes.                 *
 		 *   If the robot moves the wrong way when using the    *
 		 *     analog stick, you will need to invert that axis. *
@@ -45,8 +51,6 @@
 		 *!!     DO NOT MODIFY CODE BELOW!     !!*
 		 *!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
 
-		const char MOTOR_MAX = 127; // default: 127
-    const char MOTOR_OFF_COAST = 1; // default: 1
-    const char MOTOR_OFF = 0; // default: 0
+		#include "constants.h"
 
 #endif

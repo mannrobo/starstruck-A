@@ -26,7 +26,7 @@ int analogShift(int inputValue) {
 
 	if (!ENABLE_SENSETIVITY) {
 		return inputValue;
-	} else if (abs(inputValue) < THRESHOLD) {
+		} else if (abs(inputValue) < THRESHOLD) {
 		return MOTOR_OFF;
 	}
 
@@ -34,9 +34,9 @@ int analogShift(int inputValue) {
 
 	if (result < negate(MOTOR_MAX)) {
 		return negate(MOTOR_MAX);
-	}	else if (result > MOTOR_MAX) {
+		}	else if (result > MOTOR_MAX) {
 		return MOTOR_MAX;
-	}	else {
+		}	else {
 		return result;
 	}
 
@@ -44,7 +44,7 @@ int analogShift(int inputValue) {
 
 void driveControl() {
 
-  // Y1 & Ch4
+	// Y1 & Ch4
 	int drvY1 = analogShift( ((!INVERT_AXIS_4) ? (vexRT[Ch4]) : (negate(vexRT[Ch4]))) );
 
 	// X1 & Ch3
@@ -67,9 +67,9 @@ void armControl() {
 
 	if (vexRT[Btn6U] == 1) {
 		setArm(MOTOR_MAX);
-	} else if (vexRT[Btn6D] == 1) {
+		} else if (vexRT[Btn6D] == 1) {
 		setArm(negate(MOTOR_MAX));
-	} else {
+		} else {
 		setArm(MOTOR_OFF);
 	}
 
@@ -83,8 +83,8 @@ void wristControl() {
 
 	if (vexRT[Btn5D] == 1 || vexRT[Btn5U] == 1){
 		setWrist(MOTOR_MAX);
-  } else {
-    setWrist(MOTOR_OFF_COAST);
+		} else {
+		setWrist(MOTOR_OFF_COAST);
 	}
 
 }
