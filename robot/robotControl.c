@@ -24,19 +24,19 @@ void setDrive(int Y1, int X1, int X2) {
 
 int analogShift(int inputValue) {
 
-	if (!ENABLE_SENSETIVITY) {
-		return inputValue;
-		} else if (abs(inputValue) < THRESHOLD) {
+	if (abs(inputValue) < THRESHOLD) {
 		return MOTOR_OFF;
+	} else if (!ENABLE_SENSETIVITY) {
+		return inputValue;
 	}
 
 	int result = (1/(15500 - SENSE_MOD)) * (pow(inputValue, 3));
-
+	return result;
 	if (result < negate(MOTOR_MAX)) {
 		return negate(MOTOR_MAX);
-		}	else if (result > MOTOR_MAX) {
+	}	else if (result > MOTOR_MAX) {
 		return MOTOR_MAX;
-		}	else {
+	}	else {
 		return result;
 	}
 
@@ -84,7 +84,7 @@ void wristControl() {
 	if (vexRT[Btn5D] == 1 || vexRT[Btn5U] == 1){
 		setWrist(MOTOR_MAX);
 		} else {
-		setWrist(MOTOR_OFF_COAST);
+		setWrist(MOTOR_OFF);
 	}
 
 }
@@ -93,4 +93,15 @@ void halt() {
 	setWrist(MOTOR_OFF);
 	setArm(MOTOR_OFF);
 	setDrive(MOTOR_OFF, MOTOR_OFF, MOTOR_OFF);
+}
+
+bool killSwitch() {
+	if (vexRT[Btn7D] == 1 && vexRT[Btn8D] == 1) {
+		killSwitchState = true;
+		halt();
+	} else if (vexRT[Btn7U] == 1 && vexRT[Btn8U] == 1) {
+		killSwitchState = false;
+	}
+
+	return killSwitchState;
 }

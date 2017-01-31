@@ -37,7 +37,7 @@
 		 *     smoother drive acceleration & control. *
 		 *   When disabled, a linear function is used *
 		 *     to determine values instead.           */
-		const bool ENABLE_SENSETIVITY = true; // default: true
+		const bool ENABLE_SENSETIVITY = false; // default: false
 
 		/* Changes the sensetivity factor for analog sticks. *
 		 *   Possible values range from -13000 to 13000.     */
@@ -52,5 +52,7 @@
 		 *!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
 
 		#include "constants.h"
+
+		bool killSwitchState;
 
 #endif
