@@ -41,7 +41,12 @@
 
 		/* Changes the sensetivity factor for analog sticks. *
 		 *   Possible values range from -13000 to 13000.     */
-		const int SENSE_MOD = -500; // default: -500
+		const float SENSE_MOD = -500; // default: -500
+
+
+		/* Changes the speed of the arm mechanism/gearbox *
+		     Can be negative to reverse the motor         */
+		const int ARM_SPEED = 127; //default: 127
 
 
 		/*** END ROBOT SETTINGS ***/
@@ -53,6 +58,6 @@
 
 		#include "constants.h"
 
-		bool killSwitchState;
+		bool killSwitchState; // declaration only
 
 #endif
