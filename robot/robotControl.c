@@ -66,9 +66,9 @@ void setArm(int value) {
 void armControl() {
 
 	if (vexRT[Btn6U] == 1) {
-		setArm(ARM_SPEED);
-		} else if (vexRT[Btn6D] == 1) {
 		setArm(negate(ARM_SPEED));
+		} else if (vexRT[Btn6D] == 1) {
+		setArm(ARM_SPEED);
 		} else {
 		setArm(MOTOR_OFF);
 	}

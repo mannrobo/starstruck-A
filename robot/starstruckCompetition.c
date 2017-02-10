@@ -44,21 +44,28 @@ void pre_auton() {
 
 task autonomous() {
 
-	setWrist(MOTOR_MAX);
-	setArm(negate(MOTOR_MAX));
-
+	setDrive(0, -100, 0);
 	wait1Msec(1000);
-
-	setWrist(MOTOR_OFF);
-
-	wait1Msec(5500);
-
+	halt();
+	wait1Msec(2000);
+	setWrist(MOTOR_MAX);
+	wait1Msec(1250);
+	halt();
+	wait1Msec(2000);
+	setArm(negate(MOTOR_MAX));
+	wait1Msec(500);
+	setDrive(0, 80, 0);
+	wait1Msec(1000);
+	halt();
+	wait1Msec(2000);
+	setDrive(0, -80, 0);
+	wait1Msec(1300);
 	halt();
 
 }
 
 task usercontrol() {
-	killSwitchState = true;
+	killSwitchState = false;
 
 	while (true) {
 		if (!killSwitch()) {
