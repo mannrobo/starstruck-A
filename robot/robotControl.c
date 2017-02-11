@@ -15,8 +15,8 @@ int negate(int value) {
 void setDrive(float Y1, float X1, float X2) {
 
 	// Compute values and send to motors
-	motor[driveFrontRight] = Y1 - X1 + X2;
-	motor[driveFrontLeft]  = Y1 + X1 + X2;
+	motor[driveFrontRight] = Y1 + X1 + X2;
+	motor[driveFrontLeft]  = Y1 - X1 + X2;
 	motor[driveBackRight]  = Y1 + X1 - X2;
 	motor[driveBackLeft]   = Y1 - X1 - X2;
 
