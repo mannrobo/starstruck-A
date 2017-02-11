@@ -1,7 +1,7 @@
-#pragma config(Motor,  port1,           wrist,         tmotorVex393_HBridge, openLoop, reversed)
 #pragma config(Motor,  port2,           driveFrontLeft, tmotorVex393_MC29, openLoop)
 #pragma config(Motor,  port3,           driveFrontRight, tmotorVex393_MC29, openLoop)
 #pragma config(Motor,  port4,           arm1,          tmotorVex393_MC29, openLoop, reversed)
+#pragma config(Motor,  port5,           mantis,        tmotorVex393_MC29, openLoop)
 #pragma config(Motor,  port6,           arm3,          tmotorVex393_MC29, openLoop, reversed)
 #pragma config(Motor,  port7,           arm2,          tmotorVex393_MC29, openLoop, reversed)
 #pragma config(Motor,  port8,           driveBackLeft, tmotorVex393_MC29, openLoop)
@@ -26,6 +26,7 @@
 #include "Vex_Competition_Includes.c"
 
 // Import constants and user settings
+#include "constants.h"
 #include "settings.h"
 
 // Import robot control library
@@ -43,24 +44,24 @@ void pre_auton() {
 }
 
 task autonomous() {
-
-	setDrive(0, -100, 0);
-	wait1Msec(1000);
-	halt();
-	wait1Msec(2000);
-	setWrist(MOTOR_MAX);
-	wait1Msec(1250);
-	halt();
-	wait1Msec(2000);
-	setArm(negate(MOTOR_MAX));
-	wait1Msec(500);
-	setDrive(0, 80, 0);
-	wait1Msec(1000);
-	halt();
-	wait1Msec(2000);
-	setDrive(0, -80, 0);
-	wait1Msec(1300);
-	halt();
+	AutonomousCodePlaceholderForTesting();
+	//setDrive(0, -100, 0);
+	//wait1Msec(1000);
+	//halt();
+	//wait1Msec(2000);
+	//setWrist(MOTOR_MAX);
+	//wait1Msec(1250);
+	//halt();
+	//wait1Msec(2000);
+	//setArm(negate(MOTOR_MAX));
+	//wait1Msec(500);
+	//setDrive(0, 80, 0);
+	//wait1Msec(1000);
+	//halt();
+	//wait1Msec(2000);
+	//setDrive(0, -80, 0);
+	//wait1Msec(1300);
+	//halt();
 
 }
 
@@ -69,7 +70,7 @@ task usercontrol() {
 
 	while (true) {
 		if (!killSwitch()) {
-			wristControl();
+			mantisControl();
 			driveControl();
 			armControl();
 		} else {

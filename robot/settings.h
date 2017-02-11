@@ -46,8 +46,11 @@
 
 		/* Changes the speed of the arm mechanism/gearbox *
 		     Can be negative to reverse the motor         */
-		const int ARM_SPEED = 127; //default: 127
+		const int ARM_SPEED = MOTOR_MAX; //default: MOTOR_MAX
 
+		/* Changes the speed of the mantis mechanism/gearbox *
+		     Can be negative to reverse the motor         */
+		const int MANTIS_SPEED = (MOTOR_MAX / 2); //default: (MOTOR_MAX / 2)
 
 		/*** END ROBOT SETTINGS ***/
 
@@ -55,8 +58,6 @@
 		 *!! IF YOU ARE NOT A TEAM PROGRAMMER: !!*
 		 *!!     DO NOT MODIFY CODE BELOW!     !!*
 		 *!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
-
-		#include "constants.h"
 
 		bool killSwitchState; // declaration only
 

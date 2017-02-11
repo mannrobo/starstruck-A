@@ -75,22 +75,24 @@ void armControl() {
 
 }
 
-void setWrist(int value) {
-	motor[wrist] = value;
+void setMantis(int value) {
+	motor[mantis] = value;
 }
 
-void wristControl() {
+void mantisControl() {
 
-	if (vexRT[Btn5D] == 1 || vexRT[Btn5U] == 1){
-		setWrist(MOTOR_MAX);
-		} else {
-		setWrist(MOTOR_OFF);
+	if (vexRT[Btn5U] == 1){
+		setMantis(MANTIS_SPEED);
+	} else if (vexRT[Btn5D] == 1) {
+		setMantis(negate(MANTIS_SPEED));
+	} else {
+		setMantis(MOTOR_OFF);
 	}
 
 }
 
 void halt() {
-	setWrist(MOTOR_OFF);
+	setMantis(MOTOR_OFF);
 	setArm(MOTOR_OFF);
 	setDrive(MOTOR_OFF, MOTOR_OFF, MOTOR_OFF);
 }
