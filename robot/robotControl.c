@@ -58,9 +58,10 @@ void driveControl() {
 }
 
 void setArm(int value) {
-	motor[arm1] = value;
-  motor[arm2] = value;
-	motor[arm3] = value;
+	motor[armLeftTop]     = value;
+  motor[armLeftBottom]  = value;
+	motor[armRightTop]    = value;
+	motor[armRightBottom] = value;
 }
 
 void armControl() {
@@ -81,7 +82,7 @@ void setMantis(int value) {
 
 void mantisControl() {
 
-	if (vexRT[Btn5U] == 1){
+	if (vexRT[Btn5U] == 1) {
 		setMantis(MANTIS_SPEED);
 	} else if (vexRT[Btn5D] == 1) {
 		setMantis(negate(MANTIS_SPEED));
@@ -106,4 +107,22 @@ bool killSwitch() {
 	}
 
 	return killSwitchState;
+}
+
+void sleepFor(float timeInS) {
+	wait1Msec(timeInS * 1000);
+}
+
+void autonPause() {
+	sleepFor(AUTON_PAUSE);
+}
+
+void sleepThenHalt(float timeInS) {
+	sleepFor(timeInS);
+	halt();
+}
+
+void sleepHaltPause(float timeInS) {
+	sleepThenHalt(timeInS);
+	autonPause();
 }

@@ -43,7 +43,6 @@
 		 *   Possible values range from -13000 to 13000.     */
 		const float SENSE_MOD = -500; // default: -500
 
-
 		/* Changes the speed of the arm mechanism/gearbox *
 		     Can be negative to reverse the motor         */
 		const int ARM_SPEED = MOTOR_MAX; //default: MOTOR_MAX
@@ -51,6 +50,10 @@
 		/* Changes the speed of the mantis mechanism/gearbox *
 		     Can be negative to reverse the motor         */
 		const int MANTIS_SPEED = (MOTOR_MAX / 2); //default: (MOTOR_MAX / 2)
+
+		/* The length of time in seconds that the robot pauses *
+		 *   between autonomous commands. 0 disables pause.    */
+		const float AUTON_PAUSE = 2; //default: 2
 
 		/*** END ROBOT SETTINGS ***/
 
