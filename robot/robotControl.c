@@ -58,34 +58,35 @@ void driveControl() {
 }
 
 void setArm(int value) {
-	motor[armLeftTop]     = value;
-  motor[armLeftBottom]  = value;
-	motor[armRightTop]    = value;
-	motor[armRightBottom] = value;
+	motor[arm1] = value;
+  motor[arm2] = value;
+	motor[arm3] = value;
+	motor[arm4] = value;
 }
 
 void armControl() {
 
 	if (vexRT[Btn6U] == 1) {
 		setArm(negate(ARM_SPEED));
-		} else if (vexRT[Btn6D] == 1) {
-		setArm(ARM_SPEED);
-		} else {
-		setArm(MOTOR_OFF);
+	} else if (vexRT[Btn6D] == 1) {
+	setArm(ARM_SPEED);
+	} else {
+	setArm(MOTOR_OFF);
 	}
 
 }
 
 void setMantis(int value) {
-	motor[mantis] = value;
+	motor[mantisLeft]  = value;
+	motor[mantisRight] = value;
 }
 
 void mantisControl() {
 
 	if (vexRT[Btn5U] == 1) {
-		setMantis(MANTIS_SPEED);
-	} else if (vexRT[Btn5D] == 1) {
 		setMantis(negate(MANTIS_SPEED));
+	} else if (vexRT[Btn5D] == 1) {
+		setMantis(MANTIS_SPEED);
 	} else {
 		setMantis(MOTOR_OFF);
 	}
@@ -96,6 +97,12 @@ void halt() {
 	setMantis(MOTOR_OFF);
 	setArm(MOTOR_OFF);
 	setDrive(MOTOR_OFF, MOTOR_OFF, MOTOR_OFF);
+}
+
+void permanentHalt() {
+	while (true) {
+		halt();
+	}
 }
 
 bool killSwitch() {

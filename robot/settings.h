@@ -49,11 +49,18 @@
 
 		/* Changes the speed of the mantis mechanism/gearbox *
 		     Can be negative to reverse the motor         */
-		const int MANTIS_SPEED = (MOTOR_MAX / 2); //default: (MOTOR_MAX / 2)
+		const int MANTIS_SPEED = MOTOR_MAX; //default: (MOTOR_MAX / 2)
 
 		/* The length of time in seconds that the robot pauses *
 		 *   between autonomous commands. 0 disables pause.    */
 		const float AUTON_PAUSE = 2; //default: 2
+
+		/* Sets the autonomous mode type */
+		const string AUTON_MODE = "fence"; //default: "basic"
+
+		/* Allow pressing of Btn7L & Btn8R to execute *
+		 *   autonomous code during driver control.   */
+		const bool AUTON_DEBUG = true; //default: false
 
 		/*** END ROBOT SETTINGS ***/
 
